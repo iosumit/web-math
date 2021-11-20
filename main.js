@@ -6,24 +6,26 @@ window.onload= function () {
 
     let centerY = height * .5,
         centerX = width * .5,
-        baseRadius = 150,
-        offset = 50,
+        baseAlpha = 0.5,
+        offset = 0.5,
         speed = 0.1,
         angle = 0;
 
     render();
 
     function render() {
-        var radius = baseRadius + Math.sin(angle) * offset; //( y is repeatitive value up and down)
+        var alpha = baseAlpha + Math.sin(angle) * offset; //( y is repeatitive value up and down)
+
+        context.fillStyle = "rgba(0, 0, 0, " + alpha + ")";
 
         context.clearRect(0, 0, width, height); // Clearing the canvas
         context.beginPath();
-
-        context.arc(centerX, centerY, radius,  0, Math.PI * 2, false);
+        
+        context.arc(centerX, centerY, 100,  0, Math.PI * 2, false);
         context.fill();
 
         angle += speed;
-        console.log(radius);
+        console.log(alpha);
 
         requestAnimationFrame(render);
     } 
